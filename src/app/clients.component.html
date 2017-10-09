@@ -1,9 +1,24 @@
 <h2>My Clients</h2>
 
 <ul class="clients">
-  <li *ngFor="let client of clients" (click)="onSelect(client)"
-      [class.selected]="client === selectedClient">
+  <li>
+   <b> <span class="badge">id</span>
+    <span>name | </span>
+    <span>birthday | </span>
+    <span>averageBill |</span>
+    <span>lastVisit | </span>
+    <span>hasCard | </span>
+    <span>discount</span>
+  </b>
+  </li>
+  <li *ngFor="let client of clients">
     <span class="badge">{{client.id}}</span>
-    <span>{{client.name}}</span>
+    <span>{{client.name}} | </span>
+    <span>{{client.birthdate | date:"dd/MM/yy"}} | </span>
+    <span>{{client.averageBill}}$ | </span>
+    <span>{{client.lastVisit | date:"dd/MM/yy"}} | </span>
+    <span><input type="checkbox" [checked]="client.hasCard" disabled /></span>
+    <span *ngIf="client.hasCard"> | {{client.discount}}%</span>
   </li>
 </ul>
+
